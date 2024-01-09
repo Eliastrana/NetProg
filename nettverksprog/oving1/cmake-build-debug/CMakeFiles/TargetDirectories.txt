@@ -1,0 +1,3 @@
+/Users/eliastrana/CLionProjects/nettverksprog/oving1/cmake-build-debug/CMakeFiles/oving1.dir
+/Users/eliastrana/CLionProjects/nettverksprog/oving1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/eliastrana/CLionProjects/nettverksprog/oving1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
