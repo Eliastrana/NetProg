@@ -3,20 +3,29 @@
 ## Compile
 
 ### Server.cpp
-g++ -o server Server.cpp -pthread -std=c++11
+    g++ -o server Server.cpp -pthread -std=c++11
 
 ### Client.cpp
-g++ -o client Client.cpp
+    g++ -o client Client.cpp
+
+### WebServer.cpp
+    g++ -o webserver WebServer.cpp -pthread -std=c++11
 
 
 ## Run
 
 ### Server.cpp
 
-./server
+    ./server
 
 ### Client.cpp
 
-./client
+    ./client
+
+### WebServer.cpp
+    ./webserver
+
+    
+
 
 
