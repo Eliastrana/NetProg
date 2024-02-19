@@ -4,7 +4,7 @@
 ``docker build -t my-flask-app .``
 
 ## Run
-``docker run -p 5000:5000 my-flask-app``
+``docker run -p 4050:5000 my-flask-app``
 
 ## LocalHost
 ``http://localhost:4050``
