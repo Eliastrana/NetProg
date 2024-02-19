@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Compiler</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Style.css') }}">
+
+</head>
+<body>
+<h1>ECode 👨‍💻</h1>
+<form id="compileForm">
+    <textarea id="code" name="code" rows="10" cols="50" placeholder="🖥️ Enter your Python code here..."></textarea><br>
+    <input type="button" value="Compile" onclick="compileCode()">
+</form>
+
+<textarea id="output" rows="10" cols="50" placeholder="➜  ~" readonly></textarea>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+
+
+</body>
+
+<style>
+
+    /* Set the background of the page */
+    body {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        justify-content: flex-start; /* Start items at the top */
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+        font-size: 40px;
+        margin: 0; /* Remove default margin */
+        height: 100vh; /* Take full viewport height */
+        padding-top: 20px; /* Add some space at the top */
+    }
+
+
+    /* Style the textarea */
+    textarea {
+        background-color: #333; /* Dark gray */
+        color: white; /* White text */
+        border: none; /* Remove default border */
+        padding: 10px; /* Add some padding inside the textarea */
+        border-radius: 5px; /* Optional: Rounded corners */
+        margin: 30px 0; /* Add some margin to the top and bottom */
+        resize: none; /* Disallow resizing */
+
+    }
+
+    /* Style the button */
+    input[type="button"] {
+
+        background-color: blue;
+        color: white; /* White text */
+        border: none; /* Remove default border */
+        padding: 10px 20px; /* Vertical and horizontal padding */
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer; /* Change mouse cursor on hover */
+    }
+
+    /* Button hover effect */
+    input[type="button"]:hover {
+        background-color: #0056b3; /* A slightly different blue */
+    }
+
+    /* Optional: Style the form for better layout */
+    form {
+        margin: 20px;
+    }
+
+    #output {
+        background-color: #000000; /* Dark gray */
+        color: white; /* White text */
+        border: 2px solid white; /* White border */
+        padding: 10px; /* Add some padding inside the textarea */
+        border-radius: 5px; /* Optional: Rounded corners */
+        margin: 30px 0; /* Add some margin to the top and bottom */
+        width: calc(50% - 20px); /* Adjust width to account for padding */
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        resize: none; /* Disallow resizing */
+    }
+
+    #output:focus {
+        outline: none; /* Still removes the default outline */
+    }
+
+
+
+
+
+
+</style>
+</html>
