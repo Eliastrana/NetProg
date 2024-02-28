@@ -36,6 +36,8 @@ int main() {
         std::string message = ss.str();
 
         send(sock, message.c_str(), message.length(), 0);
+
+
         valread = read(sock, buffer, 1024);
         std::cout << "Answer from server: " << buffer << std::endl;
 

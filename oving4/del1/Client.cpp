@@ -5,22 +5,19 @@
 #include <sstream>
 
 int main() {
+    int sock = 0, valread;
+    struct sockaddr_in serv_addr;
+    char buffer[1024] = {0};
+    socklen_t addrlen = sizeof(serv_addr);
+
+    // Create a socket once before the loop
+    sock = socket(AF_INET, SOCK_DGRAM, 0);
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_port = htons(9000);
+    inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr);
+
     while(true) {
-        int sock = 0, valread;
-        struct sockaddr_in serv_addr;
-        char buffer[1024] = {0};
-        socklen_t addrlen = sizeof(serv_addr);
-
-        sock = socket(AF_INET, SOCK_DGRAM, 0);
-        serv_addr.sin_family = AF_INET;
-        serv_addr.sin_port = htons(9000);
-
-        inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr);
-
-//        if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
-//            std::cerr << "Connection Failed" << std::endl;
-//            return -1;
-//        }
+        memset(buffer, 0, sizeof(buffer)); // Clear the buffer each time
 
         char operation;
         int num1, num2;
@@ -29,24 +26,21 @@ int main() {
         std::cout << "Enter your second number: ";
         std::cin >> num2;
         std::cout << "Enter the operation (+, -, *, /): ";
-        std::cin >> operation; // Fanger opp operasjonen
-        std::cin.ignore(); // Renser input bufferen for å håndtere etterfølgende getline
+        std::cin >> operation; // Capture the operation
+        std::cin.ignore(); // Clear input buffer to handle subsequent getline
 
         std::stringstream ss;
-        ss << operation << " " << num1 << " " << num2; // Inkluderer operasjonen i meldingen
+        ss << operation << " " << num1 << " " << num2; // Include the operation in the message
         std::string message = ss.str();
 
-
-
+        // Send the message
         sendto(sock, message.c_str(), message.length(), 0, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
 
-
-        valread = recvfrom (sock, buffer, 1024, 0, (struct sockaddr *)&serv_addr, &addrlen);
+        // Receive the answer
+        valread = recvfrom(sock, buffer, 1024, 0, (struct sockaddr *)&serv_addr, &addrlen);
         std::cout << "Answer from server: " << buffer << std::endl;
 
-        close(sock);
-
-        // Spør om å fortsette eller avslutte
+        // Ask to continue or exit
         std::string decision;
         std::cout << "More math? (y/n): ";
         std::getline(std::cin, decision);
@@ -54,5 +48,8 @@ int main() {
             break;
         }
     }
+
+    // Close the socket after the loop
+    close(sock);
     return 0;
 }

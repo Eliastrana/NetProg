@@ -10,6 +10,8 @@ void handle_client(int client_socket) {
     memset(buffer, 0, sizeof(buffer));
     read(client_socket, buffer, 1023);
 
+
+
     // Skriv ut mottatt melding
 
     char operation;

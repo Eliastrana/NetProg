@@ -58,7 +58,7 @@ int main() {
     while (true) {
         int new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen);
         handle_client(new_socket);
-        //break; // For å kun håndtere én klient og deretter avslutte
+        break; // For å kun håndtere én klient og deretter avslutte
     }
 
     return 0;
