@@ -1,7 +1,6 @@
 # Only the calculation is ran within a Docker Container
 
 ## Build
-````
 
 ## Run
 ``export FLASK_APP=compiler.py``
