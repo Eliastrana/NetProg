@@ -1,12 +1,14 @@
-# How to build and run the Docker container
+# Only the calculation is ran within a Docker Container
 
 ## Build
-``docker build -t my-flask-app .``
+````
 
 ## Run
-``docker run -p 4069:5000 my-flask-app``
+``export FLASK_APP=compiler.py``
+
+``flask run``
 
 ## LocalHost
-``http://localhost:4050``
+``http://127.0.0.1:5000``
 
 
